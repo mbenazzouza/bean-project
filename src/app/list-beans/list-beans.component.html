@@ -1,0 +1,26 @@
+<div class="row">
+    <div class=" col ml-4 mt-2">
+        <h2>Bean types:</h2>
+    </div>
+    <div class="col m-2" >
+        <button class="btn btn-primary" style="float: right;" (click)="test()">Add bean</button>
+    </div>
+</div>
+<div class="m-2">
+    <ul *ngFor="let bean of beanTypes">
+        <div class="row">
+            <button class="btn" (click)="delete(bean.id)">
+                <i class="fas fa-trash"></i>
+            </button>
+            <button class="btn" [routerLink]="['/beanTypes',bean.name]">
+                <i class="far fa-eye"></i>
+            </button>
+            <div class="mr-2 mt-2">
+                {{bean.name}}
+            </div>
+        </div>
+    </ul>
+</div>
+<app-creation-modal [active]="nativeModal" [title]="'New bean type'" [confirmButtonName]="'Confirm'"
+    [cancelButtonName]="'Cancel'" (cancelButtonAction)="cancelCreation()"
+    (confirmButtonAction)="confirmCreation($event)"></app-creation-modal>
