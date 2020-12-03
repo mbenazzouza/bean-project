@@ -17,19 +17,22 @@ export class BeansApiService {
   }
 
   public getBean(name: string) {
-    console.log(name);
     return this.http.get(`/beans/${name}`);
   }
 
-  public createBean(bean: Beans) {
+  public createBean(bean: any) {
     return this.http.post('/beans', bean);
   }
 
-  public updateBean(id: number, bean: Beans) {
+  public updateBean(id: number, bean: any) {
     return this.http.put(`/beans/${id}`, bean);
   }
 
   public deleteBean(id: number) {
     return this.http.delete(`/beans/${id}`);
+  }
+
+  public getImage(name: string) {
+    return this.http.get(`/img/${name}`);
   }
 }

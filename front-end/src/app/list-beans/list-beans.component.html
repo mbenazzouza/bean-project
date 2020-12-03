@@ -2,8 +2,8 @@
     <div class=" col ml-4 mt-2">
         <h2>Bean types:</h2>
     </div>
-    <div class="col m-2" >
-        <button class="btn btn-primary" style="float: right;" (click)="test()">Add bean</button>
+    <div class="col m-2">
+        <button class="btn btn-primary" style="float: right;" (click)="createBean()">Add bean</button>
     </div>
 </div>
 <div class="m-2">
@@ -21,6 +21,10 @@
         </div>
     </ul>
 </div>
-<app-creation-modal [active]="nativeModal" [title]="'New bean type'" [confirmButtonName]="'Confirm'"
+<app-creation-modal [active]="createModal" [title]="'New bean type'" [confirmButtonName]="'Confirm'"
     [cancelButtonName]="'Cancel'" (cancelButtonAction)="cancelCreation()"
     (confirmButtonAction)="confirmCreation($event)"></app-creation-modal>
+<app-delete-modal [active]="deleteModal" [title]="'Confirmation'"
+    [message]="'Would like to delete this bean ?'"
+    [confirmButtonName]="'Yes'" [cancelButtonName]="'No'" (cancelButtonAction)="cancelDeletion()"
+    (confirmButtonAction)="confirmDeletion()"></app-delete-modal>

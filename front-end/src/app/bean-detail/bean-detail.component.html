@@ -1,0 +1,32 @@
+<div class="m-4 row" >
+    <div class="col" style="float:right">
+        <form [formGroup]="form" *ngIf="bean; else notFound">
+            <div class="form-group">
+                <label for="name">Name:</label>
+                <input formControlName="name" class="form-group">
+            </div>
+            <div class="form-group">
+                <label for="description">Description:</label>
+                <textarea class="form-group" formControlName="description" rows="5" cols="60"></textarea>
+            </div>
+            <div class="row">
+                <button type="button" class="btn btn-primary ml-3" (click)="save()">
+                    <i class="fas fa-save"></i>
+                    Save
+                </button>
+                <button *ngIf="form.dirty" type="button" class="btn btn-secondary  ml-2" (click)="cancel()">
+                    Cancel
+                </button>
+            </div>
+        </form>
+        <ng-template #notFound>
+            The {{beanName}} bean does not exist in our records
+        </ng-template>
+    </div>
+    <div *ngIf="image; else uploadImage" class="col" style="float:left">
+        <img [src]="image" alt="test" width="100%">
+    </div>
+    <ng-template #uploadImage>
+        <input type="file" name="image" (change)="onFileChanged($event)" />
+    </ng-template>
+</div>
